@@ -17,7 +17,7 @@ async function getTodos() {
 }
 
 //Recuperar dados de aluno
-function getAluno(matricula) {
+async function getAluno(matricula) {
     try {
         //Simulando acesso ao BD com a leitura de um arquivo
         // const jsonString = fs.readFileSync(path.resolve(__dirname, "../models/alunos.json"));

@@ -1,15 +1,12 @@
 20
+const fs = require('fs');
+const path = require("path");
+const alunosTodos = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../alunos.json")));
 const aluno = jest.createMockFromModule('../aluno.js');
 
 function getTodos() {
   return (
     [{
-      "matricula": 2017390222,
-      "nome": "Renan"
-    }, {
-      "matricula": 2017390281,
-      "nome": "Sidney"
-    }, {
         "matricula": 715752,
         "nome": "Lana"
     }, {
@@ -45,10 +42,7 @@ function getTodos() {
 
 
 function getAluno(matricula) {
-  return ({
-    matricula: 715752,
-    nome: 'Abba',
-  });
+  return alunosTodos.find(aluno => aluno.matricula == matricula);
 }
 
 
