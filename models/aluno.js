@@ -1,36 +1,48 @@
-// aluno.js componente da camada de modelo da nossa arquitetura MVC
+const connect = require("./db.js").connect;
 
-const fs = require('fs')
-const path = require("path");
-const db = require("./db");
-
-async function getTodos() {
-    try {
-        //acesso a recurso (disco) poderia ser banco de dados
-        // const jsonString = fs.readFileSync(path.resolve(__dirname, "../models/alunos.json"));
-        const alunos = await db.selectAlunos();
-        return alunos;
-    } catch(err) {
-        console.log(err)
-        return
-    }
+async function getAlunos() {
+  const conn = await connect();
+  let [rows] = await conn.query("SELECT * FROM aluno;");
+  let returnValue = [];
+  for (i = 0; i < rows.length; i++) {
+    returnValue.push(JSON.parse(JSON.stringify(rows[i])));
+  }
+  return returnValue;
 }
 
-//Recuperar dados de aluno
-async function getAluno(matricula) {
-    try {
-        //Simulando acesso ao BD com a leitura de um arquivo
-        // const jsonString = fs.readFileSync(path.resolve(__dirname, "../models/alunos.json"));
-        // let alunos = JSON.parse(jsonString);
-        const aluno = await db.selectAluno(matricula);
-        return aluno;
-    } catch(err) {
-        console.log(err)
-        return
-    }
+async function getAlunoByMatricula(matricula) {
+  const conn = await connect();
+  let [rows] = await conn.query("SELECT * FROM aluno where matricula=?;", [
+    matricula,
+  ]);
+  let returnValue = rows[0];
+  return returnValue;
+}
+
+async function createAluno(aluno) {
+  const conn = await connect();
+  const sql = "INSERT INTO aluno(nome,matricula) VALUES (?,?);";
+  const values = [aluno.nome, aluno.matricula];
+  return await conn.query(sql, values);
+}
+
+async function updateAluno(id, aluno) {
+  const conn = await connect();
+  const sql = "UPDATE aluno SET nome=?, matricula=? WHERE aluno_ID=?";
+  const values = [aluno.nome, aluno.matricula, id];
+  return await conn.query(sql, values);
+}
+
+async function deleteAluno(id) {
+  const conn = await connect();
+  const sql = "DELETE FROM aluno where aluno_ID=?;";
+  return await conn.query(sql, [id]);
 }
 
 module.exports = {
-    getAluno,
-    getTodos
-}
+  getAlunos,
+  getAlunoByMatricula,
+  createAluno,
+  updateAluno,
+  deleteAluno,
+};
