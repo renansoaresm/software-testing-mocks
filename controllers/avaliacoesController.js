@@ -25,10 +25,73 @@ async function deleteAvaliacao(id) {
   return response;
 }
 
+async function getAvaliacoesByAluno(id) {
+  let avaliacoes = await avaliacaoModel.getAvaliacoesByAluno(id);
+  return avaliacoes;
+}
+
+async function getCrCalcByAluno(id) {
+  let totalNota = 0;
+  let totalPeso = 0;
+  let avaliacoes = await avaliacaoModel.getAvaliacoesByAluno(id);
+  avaliacoes.forEach((avaliacao) => {
+    totalNota += avaliacao.nota * avaliacao.peso;
+    totalPeso += avaliacao.peso;
+  });
+  return totalNota / totalPeso;
+}
+
+async function getCrCalcByAlunoAndPeriodo(aluno_ID, periodo_ID) {
+  let totalNota = 0;
+  let totalPeso = 0;
+  let avaliacoes = await avaliacaoModel.getAvaliacoesByAlunoAndPeriodo(
+    aluno_ID,
+    periodo_ID
+  );
+  avaliacoes.forEach((avaliacao) => {
+    totalNota += avaliacao.nota * avaliacao.peso;
+    totalPeso += avaliacao.peso;
+  });
+  return totalNota / totalPeso;
+}
+
+async function getMediaByTurma(id) {
+  let totalNota = 0;
+  let totalPeso = 0;
+  let avaliacoes = await avaliacaoModel.getAvaliacoesByTurma(id);
+  avaliacoes.forEach((avaliacao) => {
+    totalNota += avaliacao.nota * avaliacao.peso;
+    totalPeso += avaliacao.peso;
+  });
+  return totalNota / totalPeso;
+}
+
+async function getAlunoStatus(aluno_ID, turma_ID) {
+  let totalNota = 0;
+  let totalPeso = 0;
+  let avaliacoes = await avaliacaoModel.getAvaliacoesByAlunoAndTurma(
+    aluno_ID,
+    turma_ID
+  );
+  avaliacoes.forEach((avaliacao) => {
+    totalNota += avaliacao.nota * avaliacao.peso;
+    totalPeso += avaliacao.peso;
+  });
+  let nota = totalNota / totalPeso;
+  if (!nota) return "Não cursado";
+  if (nota >= 5) return "Aprovado";
+  return "Reprovado";
+}
+
 module.exports = {
   getAvaliacoes,
   getAvaliacaoByID,
   createAvaliacao,
   updateAvaliacao,
   deleteAvaliacao,
+  getAvaliacoesByAluno,
+  getCrCalcByAluno,
+  getCrCalcByAlunoAndPeriodo,
+  getMediaByTurma,
+  getAlunoStatus,
 };

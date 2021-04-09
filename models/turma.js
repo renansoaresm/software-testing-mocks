@@ -52,10 +52,23 @@ async function deleteTurma(id) {
   return await conn.query(sql, [id]);
 }
 
+async function getTurmasByPeriodo(periodo_ID) {
+  const conn = await connect();
+  let [rows] = await conn.query("SELECT * FROM turma WHERE periodo_ID=?;", [
+    periodo_ID,
+  ]);
+  let returnValue = [];
+  for (i = 0; i < rows.length; i++) {
+    returnValue.push(JSON.parse(JSON.stringify(rows[i])));
+  }
+  return returnValue;
+}
+
 module.exports = {
   getTurmas,
   getTurmaByCodigo,
   createTurma,
   updateTurma,
   deleteTurma,
+  getTurmasByPeriodo,
 };

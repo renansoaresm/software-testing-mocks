@@ -35,4 +35,45 @@ avaliacaoRouter.delete("/avaliacoes/:id", async function (req, res) {
   res.send(response);
 });
 
+avaliacaoRouter.get("/avaliacoes/aluno/:id", async function (req, res) {
+  let id = req.params.id;
+  let avaliacoes = await avaliacaoController.getAvaliacoesByAluno(id);
+  res.send(avaliacoes);
+});
+
+avaliacaoRouter.get("/avaliacoes/cr/:id", async function (req, res) {
+  let id = req.params.id;
+  let cr = await avaliacaoController.getCrCalcByAluno(id);
+  res.send({ cr });
+});
+
+avaliacaoRouter.get(
+  "/avaliacoes/cr/:aluno_ID/:periodo_ID",
+  async function (req, res) {
+    let aluno_ID = req.params.aluno_ID;
+    let periodo_ID = req.params.periodo_ID;
+    let cr = await avaliacaoController.getCrCalcByAlunoAndPeriodo(
+      aluno_ID,
+      periodo_ID
+    );
+    res.send({ cr });
+  }
+);
+
+avaliacaoRouter.get("/avaliacoes/turma/:id", async function (req, res) {
+  let id = req.params.id;
+  let media = await avaliacaoController.getMediaByTurma(id);
+  res.send({ media });
+});
+
+avaliacaoRouter.get(
+  "/avaliacoes/aluno/:aluno_ID/status/:turma_ID",
+  async function (req, res) {
+    let aluno_ID = req.params.aluno_ID;
+    let turma_ID = req.params.turma_ID;
+    let status = await avaliacaoController.getAlunoStatus(aluno_ID, turma_ID);
+    res.send({ status });
+  }
+);
+
 module.exports = avaliacaoRouter;

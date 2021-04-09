@@ -35,4 +35,10 @@ turmaRouter.delete("/turmas/:id", async function (req, res) {
   res.send(response);
 });
 
+turmaRouter.get("/turmas/periodo/:id", async function (req, res) {
+  let id = req.params.id;
+  let turmas = await turmaController.getTurmasByPeriodo(id);
+  res.send(turmas);
+});
+
 module.exports = turmaRouter;

@@ -53,10 +53,68 @@ async function deleteAvaliacao(id) {
   return await conn.query(sql, [id]);
 }
 
+async function getAvaliacoesByAluno(aluno_id) {
+  const conn = await connect();
+  let [rows] = await conn.query("SELECT * FROM avaliacao WHERE aluno_ID=?;", [
+    aluno_id,
+  ]);
+  let returnValue = [];
+  for (i = 0; i < rows.length; i++) {
+    returnValue.push(JSON.parse(JSON.stringify(rows[i])));
+  }
+  return returnValue;
+}
+
+async function getAvaliacoesByAlunoAndPeriodo(aluno_ID, periodo_ID) {
+  const conn = await connect();
+  let [
+    rows,
+  ] = await conn.query(
+    "SELECT avaliacao.nota, avaliacao.peso, avaliacao.turma_ID, avaliacao.aluno_ID, periodo.ano, periodo.semestre FROM `avaliacao` INNER JOIN turma on turma.turma_ID = avaliacao.turma_ID INNER JOIN periodo on periodo.periodo_ID = turma.periodo_ID WHERE avaliacao.aluno_ID =? AND turma.periodo_ID =?",
+    [aluno_ID, periodo_ID]
+  );
+  let returnValue = [];
+  for (i = 0; i < rows.length; i++) {
+    returnValue.push(JSON.parse(JSON.stringify(rows[i])));
+  }
+  return returnValue;
+}
+
+async function getAvaliacoesByAlunoAndTurma(aluno_ID, turma_ID) {
+  const conn = await connect();
+  let [
+    rows,
+  ] = await conn.query(
+    "SELECT * FROM `avaliacao` WHERE aluno_ID=? AND turma_ID=?",
+    [aluno_ID, turma_ID]
+  );
+  let returnValue = [];
+  for (i = 0; i < rows.length; i++) {
+    returnValue.push(JSON.parse(JSON.stringify(rows[i])));
+  }
+  return returnValue;
+}
+
+async function getAvaliacoesByTurma(turma_ID) {
+  const conn = await connect();
+  let [rows] = await conn.query("SELECT * FROM `avaliacao` WHERE turma_ID=?", [
+    turma_ID,
+  ]);
+  let returnValue = [];
+  for (i = 0; i < rows.length; i++) {
+    returnValue.push(JSON.parse(JSON.stringify(rows[i])));
+  }
+  return returnValue;
+}
+
 module.exports = {
   getAvaliacoes,
   getAvaliacaoByID,
   createAvaliacao,
   updateAvaliacao,
   deleteAvaliacao,
+  getAvaliacoesByAluno,
+  getAvaliacoesByAlunoAndPeriodo,
+  getAvaliacoesByAlunoAndTurma,
+  getAvaliacoesByTurma,
 };

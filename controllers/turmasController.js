@@ -25,10 +25,16 @@ async function deleteTurma(id) {
   return response;
 }
 
+async function getTurmasByPeriodo(id) {
+  let turma = await turmaModel.getTurmasByPeriodo(id);
+  return turma;
+}
+
 module.exports = {
   getTurmas,
   getTurmaByCodigo,
   createTurma,
   updateTurma,
   deleteTurma,
+  getTurmasByPeriodo,
 };
