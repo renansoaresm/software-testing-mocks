@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 08/04/2021 às 22:37
+-- Tempo de geração: 29/04/2021 às 00:38
 -- Versão do servidor: 8.0.23-0ubuntu0.20.04.1
 -- Versão do PHP: 7.4.3
 
@@ -50,7 +50,9 @@ INSERT INTO `aluno` (`aluno_ID`, `nome`, `matricula`) VALUES
 (9, 'Margot', 721653),
 (10, 'Arlee', 733699),
 (11, 'Findley', 727993),
-(12, 'Tory', 702409);
+(12, 'Tory', 702409),
+(14, 'teste update', 45678),
+(41, 'teste', 123456456);
 
 -- --------------------------------------------------------
 
@@ -210,7 +212,7 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `aluno_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `aluno_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao`

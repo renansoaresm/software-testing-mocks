@@ -20,17 +20,25 @@ async function getAlunoByMatricula(matricula) {
 }
 
 async function createAluno(aluno) {
-  const conn = await connect();
-  const sql = "INSERT INTO aluno(nome,matricula) VALUES (?,?);";
-  const values = [aluno.nome, aluno.matricula];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql = "INSERT INTO aluno(nome,matricula) VALUES (?,?);";
+    const values = [aluno.nome, aluno.matricula];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Aluno não criado" };
+  }
 }
 
 async function updateAluno(id, aluno) {
-  const conn = await connect();
-  const sql = "UPDATE aluno SET nome=?, matricula=? WHERE aluno_ID=?";
-  const values = [aluno.nome, aluno.matricula, id];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql = "UPDATE aluno SET nome=?, matricula=? WHERE aluno_ID=?";
+    const values = [aluno.nome, aluno.matricula, id];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Aluno não alterado" };
+  }
 }
 
 async function deleteAluno(id) {
