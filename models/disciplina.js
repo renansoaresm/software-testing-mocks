@@ -20,17 +20,25 @@ async function getDisciplinaByCodigo(codigo) {
 }
 
 async function createDisciplina(disciplina) {
-  const conn = await connect();
-  const sql = "INSERT INTO disciplina(codigo,nome) VALUES (?,?);";
-  const values = [disciplina.codigo, disciplina.nome];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql = "INSERT INTO disciplina(codigo,nome) VALUES (?,?);";
+    const values = [disciplina.codigo, disciplina.nome];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Disciplina não criada" };
+  }
 }
 
 async function updateDisciplina(id, disciplina) {
-  const conn = await connect();
-  const sql = "UPDATE disciplina SET nome=?, codigo=? WHERE disciplina_ID=?";
-  const values = [disciplina.nome, disciplina.codigo, id];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql = "UPDATE disciplina SET nome=?, codigo=? WHERE disciplina_ID=?";
+    const values = [disciplina.nome, disciplina.codigo, id];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Disciplina não alterada" };
+  }
 }
 
 async function deleteDisciplina(id) {

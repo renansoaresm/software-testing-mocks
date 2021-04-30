@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Banco de dados: `universidade`
@@ -32,7 +32,7 @@ CREATE TABLE `aluno` (
   `aluno_ID` int NOT NULL,
   `nome` varchar(40) NOT NULL,
   `matricula` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `aluno`
@@ -66,7 +66,7 @@ CREATE TABLE `avaliacao` (
   `aluno_ID` int NOT NULL,
   `nota` float NOT NULL,
   `peso` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `avaliacao`
@@ -89,7 +89,7 @@ CREATE TABLE `disciplina` (
   `disciplina_ID` int NOT NULL,
   `codigo` varchar(20) NOT NULL,
   `nome` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `disciplina`
@@ -108,7 +108,7 @@ CREATE TABLE `periodo` (
   `periodo_ID` int NOT NULL,
   `ano` int NOT NULL,
   `semestre` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `periodo`
@@ -128,7 +128,7 @@ CREATE TABLE `professor` (
   `professor_ID` int NOT NULL,
   `nome` varchar(40) NOT NULL,
   `matricula` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `professor`
@@ -149,7 +149,7 @@ CREATE TABLE `turma` (
   `disciplina_ID` int NOT NULL,
   `professor_ID` int NOT NULL,
   `periodo_ID` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `turma`

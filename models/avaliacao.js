@@ -21,30 +21,38 @@ async function getAvaliacaoByID(id) {
 }
 
 async function createAvaliacao(avaliacao) {
-  const conn = await connect();
-  const sql =
-    "INSERT INTO avaliacao (turma_ID,aluno_ID,peso,nota) VALUES (?,?,?,?);";
-  const values = [
-    avaliacao.turma,
-    avaliacao.aluno,
-    avaliacao.peso,
-    avaliacao.nota,
-  ];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql =
+      "INSERT INTO avaliacao (turma_ID,aluno_ID,peso,nota) VALUES (?,?,?,?);";
+    const values = [
+      avaliacao.turma,
+      avaliacao.aluno,
+      avaliacao.peso,
+      avaliacao.nota,
+    ];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Avaliação não criada" };
+  }
 }
 
 async function updateAvaliacao(id, avaliacao) {
-  const conn = await connect();
-  const sql =
-    "UPDATE avaliacao SET turma_ID=?, aluno_ID=?, peso=?, nota=? WHERE avaliacao_ID=?";
-  const values = [
-    avaliacao.turma,
-    avaliacao.aluno,
-    avaliacao.peso,
-    avaliacao.nota,
-    id,
-  ];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql =
+      "UPDATE avaliacao SET turma_ID=?, aluno_ID=?, peso=?, nota=? WHERE avaliacao_ID=?";
+    const values = [
+      avaliacao.turma,
+      avaliacao.aluno,
+      avaliacao.peso,
+      avaliacao.nota,
+      id,
+    ];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Avaliação não alterada" };
+  }
 }
 
 async function deleteAvaliacao(id) {

@@ -20,17 +20,25 @@ async function getPeriodoByID(id) {
 }
 
 async function createPeriodo(periodo) {
-  const conn = await connect();
-  const sql = "INSERT INTO periodo(ano,semestre) VALUES (?,?);";
-  const values = [periodo.ano, periodo.semestre];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql = "INSERT INTO periodo(ano,semestre) VALUES (?,?);";
+    const values = [periodo.ano, periodo.semestre];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Período não criado" };
+  }
 }
 
 async function updatePeriodo(id, periodo) {
-  const conn = await connect();
-  const sql = "UPDATE periodo SET ano=?, semestre=? WHERE periodo_ID=?";
-  const values = [periodo.ano, periodo.semestre, id];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql = "UPDATE periodo SET ano=?, semestre=? WHERE periodo_ID=?";
+    const values = [periodo.ano, periodo.semestre, id];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Período não alterado" };
+  }
 }
 
 async function deletePeriodo(id) {

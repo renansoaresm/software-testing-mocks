@@ -20,30 +20,38 @@ async function getTurmaByCodigo(codigo) {
 }
 
 async function createTurma(turma) {
-  const conn = await connect();
-  const sql =
-    "INSERT INTO turma(codigo,disciplina_ID,professor_ID,periodo_ID) VALUES (?,?,?,?);";
-  const values = [
-    turma.codigo,
-    turma.disciplina,
-    turma.professor,
-    turma.periodo,
-  ];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql =
+      "INSERT INTO turma(codigo,disciplina_ID,professor_ID,periodo_ID) VALUES (?,?,?,?);";
+    const values = [
+      turma.codigo,
+      turma.disciplina,
+      turma.professor,
+      turma.periodo,
+    ];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Turma não criada" };
+  }
 }
 
 async function updateTurma(id, turma) {
-  const conn = await connect();
-  const sql =
-    "UPDATE turma SET codigo=?, disciplina_ID=?, professor_ID=?, periodo_ID=? WHERE turma_ID=?";
-  const values = [
-    turma.codigo,
-    turma.disciplina,
-    turma.professor,
-    turma.periodo,
-    id,
-  ];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql =
+      "UPDATE turma SET codigo=?, disciplina_ID=?, professor_ID=?, periodo_ID=? WHERE turma_ID=?";
+    const values = [
+      turma.codigo,
+      turma.disciplina,
+      turma.professor,
+      turma.periodo,
+      id,
+    ];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Turma não alterada" };
+  }
 }
 
 async function deleteTurma(id) {

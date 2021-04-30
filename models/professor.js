@@ -20,17 +20,25 @@ async function getProfessorByMatricula(matricula) {
 }
 
 async function createProfessor(professor) {
-  const conn = await connect();
-  const sql = "INSERT INTO professor(nome,matricula) VALUES (?,?);";
-  const values = [professor.nome, professor.matricula];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql = "INSERT INTO professor(nome,matricula) VALUES (?,?);";
+    const values = [professor.nome, professor.matricula];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Professor não criado" };
+  }
 }
 
 async function updateProfessor(id, professor) {
-  const conn = await connect();
-  const sql = "UPDATE professor SET nome=?, matricula=? WHERE professor_ID=?";
-  const values = [professor.nome, professor.matricula, id];
-  return await conn.query(sql, values);
+  try {
+    const conn = await connect();
+    const sql = "UPDATE professor SET nome=?, matricula=? WHERE professor_ID=?";
+    const values = [professor.nome, professor.matricula, id];
+    return await conn.query(sql, values);
+  } catch (e) {
+    return { erro: "Professor não alterado" };
+  }
 }
 
 async function deleteProfessor(id) {
