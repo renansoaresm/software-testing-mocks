@@ -10,6 +10,7 @@ jest.mock("../models/aluno.js");
 
 test("Teste de get Aluno By Matricula Mock", () => {
   expect(alunoModel.getAlunoByMatricula(684958)).toEqual({
+    aluno_ID: 2,
     matricula: 684958,
     nome: "Lanita",
   });

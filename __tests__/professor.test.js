@@ -7,8 +7,12 @@ const professoresTodosBD = JSON.parse(
 require("iconv-lite").encodingExists("foo");
 
 test("Teste de get Professor By Matricula do Banco de dados", () => {
-  return professorModel.getProfessorByMatricula(701677).then((data) => {
-    expect(data).toEqual({ professor_ID: 6, matricula: 701677, nome: "Abba" });
+  return professorModel.getProfessorByMatricula(202020).then((data) => {
+    expect(data).toEqual({
+      professor_ID: 3,
+      matricula: 202020,
+      nome: "Kinder",
+    });
   });
 });
 
@@ -20,7 +24,7 @@ test("Teste de get Todos Professores do Banco de dados", () => {
 
 test("Criar Professor", () => {
   return professorModel
-    .createProfessor({ matricula: "178901112", nome: "Professor Teste" })
+    .createProfessor({ matricula: "2321311231", nome: "Professor Teste" })
     .then((data) => {
       expect(data).toEqual(
         expect.arrayContaining([
@@ -42,7 +46,7 @@ test("Criar Professor Quebrado", () => {
 
 test("Editar Professor", () => {
   return professorModel
-    .updateProfessor(14, { matricula: "45678", nome: "teste update" })
+    .updateProfessor(3, { matricula: "232323", nome: "Kinder Almentero" })
     .then((data) => {
       expect(data).toEqual(
         expect.arrayContaining([
@@ -56,7 +60,7 @@ test("Editar Professor", () => {
 
 test("Editar Professor Quebrado", () => {
   return professorModel
-    .updateProfessor(14, {
+    .updateProfessor(1, {
       matricula: "1234568526963652",
       nome: "teste update",
     })
@@ -67,7 +71,7 @@ test("Editar Professor Quebrado", () => {
 
 test("Editar Professor inexistente", () => {
   return professorModel
-    .updateProfessor(15, { matricula: "45678", nome: "teste update" })
+    .updateProfessor(4, { matricula: "45678", nome: "teste update" })
     .then((data) => {
       expect(data).toEqual(
         expect.arrayContaining([
@@ -80,7 +84,7 @@ test("Editar Professor inexistente", () => {
 });
 
 test("Deletar Professor", () => {
-  return professorModel.deleteProfessor(41).then((data) => {
+  return professorModel.deleteProfessor(1).then((data) => {
     expect(data).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
