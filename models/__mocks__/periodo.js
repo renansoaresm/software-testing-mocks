@@ -1,21 +1,21 @@
 const fs = require("fs");
 const path = require("path");
-const alunosTodos = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, "alunos.json"))
+const periodosTodos = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "periodos.json"))
 );
-const aluno = jest.createMockFromModule("../aluno.js");
+const periodo = jest.createMockFromModule("../periodo.js");
 
-function getAlunos() {
-  return alunosTodos;
+function getPeriodos() {
+  return periodosTodos;
 }
 
-function getAlunoByMatricula(matricula) {
-  return alunosTodos.find((aluno) => aluno.matricula == matricula);
+function getPeriodoByID(id) {
+  return periodosTodos.find((periodo) => periodo.id == id);
 }
 
-async function createAluno(aluno) {
-  if (aluno.matricula >= 2147483647) {
-    return { erro: "Aluno não criado" };
+async function createPeriodo(periodo) {
+  if (periodo.id >= 2147483647) {
+    return { erro: "Periodo não criado" };
   }
   return [
     {
@@ -30,9 +30,9 @@ async function createAluno(aluno) {
   ];
 }
 
-async function updateAluno(id, aluno) {
-  if (aluno.matricula >= 2147483647) {
-    return { erro: "Aluno não alterado" };
+async function updatePeriodo(id, periodo) {
+  if (periodo.id >= 2147483647) {
+    return { erro: "Periodo não alterado" };
   }
   if (id == 15) {
     return [
@@ -62,7 +62,7 @@ async function updateAluno(id, aluno) {
   ];
 }
 
-async function deleteAluno(id) {
+async function deletePeriodo(id) {
   if (id == 36) {
     return [
       {
@@ -90,9 +90,9 @@ async function deleteAluno(id) {
 }
 
 module.exports = {
-  getAlunos,
-  getAlunoByMatricula,
-  createAluno,
-  updateAluno,
-  deleteAluno,
+  getPeriodos,
+  getPeriodoByID,
+  createPeriodo,
+  updatePeriodo,
+  deletePeriodo,
 };

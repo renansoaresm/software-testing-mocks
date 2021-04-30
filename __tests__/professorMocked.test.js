@@ -46,7 +46,7 @@ test("Criar Professor Quebrado Mock", () => {
 
 test("Editar Professor Mock", () => {
   return professorModel
-    .});
+    });
 
 test("Editar Professor Quebrado Mock", () => {
   return professorModel
