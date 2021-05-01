@@ -3,7 +3,7 @@ const path = require("path");
 const avaliacoesTodos = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "avaliacoes.json"))
 );
-const aluno = jest.createMockFromModule("../avaliacao.js");
+const avaliacao = jest.createMockFromModule("../avaliacao.js");
 
 function getAvaliacoes() {
   return avaliacoesTodos;

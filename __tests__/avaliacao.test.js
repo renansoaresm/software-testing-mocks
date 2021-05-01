@@ -61,7 +61,7 @@ test("Criar Avaliacao Quebrada", () => {
 test("Editar Avaliacao", () => {
   return avaliacaoModel
     .updateAvaliacao(7, {
-      turma_ID: 2,
+      turma_ID: 1,
       aluno_ID: 3,
       nota: 9,
       peso: 2,
@@ -112,7 +112,7 @@ test("Editar Avaliacao inexistente", () => {
 });
 
 test("Deletar Avaliacao", () => {
-  return avaliacaoModel.deleteAvaliacao(4).then((data) => {
+  return avaliacaoModel.deleteAvaliacao(3).then((data) => {
     expect(data).toEqual(
       expect.arrayContaining([
         expect.objectContaining({

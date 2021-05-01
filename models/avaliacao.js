@@ -33,7 +33,7 @@ async function createAvaliacao(avaliacao) {
     ];
     return await conn.query(sql, values);
   } catch (e) {
-    return { erro: "Avaliação não criada" };
+    return { erro: "Avaliacao não criada" };
   }
 }
 
@@ -51,7 +51,7 @@ async function updateAvaliacao(id, avaliacao) {
     ];
     return await conn.query(sql, values);
   } catch (e) {
-    return { erro: "Avaliação não alterada" };
+    return { erro: "Avaliacao não alterada" };
   }
 }
 
