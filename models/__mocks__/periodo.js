@@ -10,11 +10,11 @@ function getPeriodos() {
 }
 
 function getPeriodoByID(id) {
-  return periodosTodos.find((periodo) => periodo.id == id);
+  return periodosTodos.find((periodo) => periodo.periodo_ID == id);
 }
 
 async function createPeriodo(periodo) {
-  if (periodo.id >= 2147483647) {
+  if (periodo.ano >= 2147483647 || periodo.semestre >= 2147483647) {
     return { erro: "Periodo não criado" };
   }
   return [
@@ -31,7 +31,7 @@ async function createPeriodo(periodo) {
 }
 
 async function updatePeriodo(id, periodo) {
-  if (periodo.id >= 2147483647) {
+  if (periodo.ano >= 2147483647 || periodo.semestre >= 2147483647) {
     return { erro: "Periodo não alterado" };
   }
   if (id == 15) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 29/04/2021 às 00:38
+-- Tempo de geração: 30/04/2021 às 21:33
 -- Versão do servidor: 8.0.23-0ubuntu0.20.04.1
 -- Versão do PHP: 7.4.3
 
@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Banco de dados: `universidade`
@@ -32,7 +32,7 @@ CREATE TABLE `aluno` (
   `aluno_ID` int NOT NULL,
   `nome` varchar(40) NOT NULL,
   `matricula` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `aluno`
@@ -66,7 +66,7 @@ CREATE TABLE `avaliacao` (
   `aluno_ID` int NOT NULL,
   `nota` float NOT NULL,
   `peso` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `avaliacao`
@@ -75,7 +75,6 @@ CREATE TABLE `avaliacao` (
 INSERT INTO `avaliacao` (`avaliacao_ID`, `turma_ID`, `aluno_ID`, `nota`, `peso`) VALUES
 (1, 1, 1, 10, 1),
 (3, 1, 1, 6, 2),
-(4, 1, 2, 4, 2),
 (5, 3, 1, 5, 2),
 (6, 3, 1, 6, 1);
 
@@ -87,16 +86,17 @@ INSERT INTO `avaliacao` (`avaliacao_ID`, `turma_ID`, `aluno_ID`, `nota`, `peso`)
 
 CREATE TABLE `disciplina` (
   `disciplina_ID` int NOT NULL,
-  `codigo` varchar(20) NOT NULL,
+  `codigo` int NOT NULL,
   `nome` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `disciplina`
 --
 
 INSERT INTO `disciplina` (`disciplina_ID`, `codigo`, `nome`) VALUES
-(1, '172839', 'disciplina top top');
+(1, 172839, 'teste update'),
+(3, 12345, 'disciplina');
 
 -- --------------------------------------------------------
 
@@ -108,7 +108,7 @@ CREATE TABLE `periodo` (
   `periodo_ID` int NOT NULL,
   `ano` int NOT NULL,
   `semestre` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `periodo`
@@ -116,7 +116,9 @@ CREATE TABLE `periodo` (
 
 INSERT INTO `periodo` (`periodo_ID`, `ano`, `semestre`) VALUES
 (1, 2021, 1),
-(3, 2022, 1);
+(3, 2024, 3),
+(4, 2023, 1),
+(5, 2023, 1);
 
 -- --------------------------------------------------------
 
@@ -128,14 +130,16 @@ CREATE TABLE `professor` (
   `professor_ID` int NOT NULL,
   `nome` varchar(40) NOT NULL,
   `matricula` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `professor`
 --
 
 INSERT INTO `professor` (`professor_ID`, `nome`, `matricula`) VALUES
-(1, 'teste 6', 123654);
+(1, 'Luciano', 222222),
+(2, 'Juliana', 212121),
+(3, 'Kinder', 202020);
 
 -- --------------------------------------------------------
 
@@ -145,19 +149,19 @@ INSERT INTO `professor` (`professor_ID`, `nome`, `matricula`) VALUES
 
 CREATE TABLE `turma` (
   `turma_ID` int NOT NULL,
-  `codigo` varchar(20) NOT NULL,
+  `codigo` int NOT NULL,
   `disciplina_ID` int NOT NULL,
   `professor_ID` int NOT NULL,
   `periodo_ID` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `turma`
 --
 
 INSERT INTO `turma` (`turma_ID`, `codigo`, `disciplina_ID`, `professor_ID`, `periodo_ID`) VALUES
-(1, '123456', 1, 1, 1),
-(3, '654321', 1, 1, 3);
+(1, 123456, 1, 1, 1),
+(3, 654321, 1, 1, 3);
 
 --
 -- Índices de tabelas apagadas
@@ -212,7 +216,7 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `aluno_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `aluno_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacao`
@@ -224,25 +228,25 @@ ALTER TABLE `avaliacao`
 -- AUTO_INCREMENT de tabela `disciplina`
 --
 ALTER TABLE `disciplina`
-  MODIFY `disciplina_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `disciplina_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `periodo`
 --
 ALTER TABLE `periodo`
-  MODIFY `periodo_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `periodo_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `professor_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `professor_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `turma_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `turma_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restrições para dumps de tabelas

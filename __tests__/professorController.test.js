@@ -1,13 +1,13 @@
 // const fs = require("fs");
 // const path = require("path");
-// const professorModel = require("../models/professor.js");
+// const professorController = require("../controllers/professoresController.js");
 // const professoresTodosBD = JSON.parse(
 //   fs.readFileSync(path.resolve(__dirname, "../models/professoresBD.json"))
 // );
 // require("iconv-lite").encodingExists("foo");
 
-// test("Teste de get Professor By Matricula do Banco de dados", () => {
-//   return professorModel.getProfessorByMatricula(202020).then((data) => {
+// test("Teste de get Professor By Matricula do Banco de dados Controller", () => {
+//   return professorController.getProfessorByMatricula(202020).then((data) => {
 //     expect(data).toEqual({
 //       professor_ID: 3,
 //       matricula: 202020,
@@ -16,14 +16,14 @@
 //   });
 // });
 
-// test("Teste de get Todos Professores do Banco de dados", () => {
-//   return professorModel.getProfessores().then((data) => {
+// test("Teste de get Todos Professores do Banco de dados Controller", () => {
+//   return professorController.getProfessores().then((data) => {
 //     expect(data).toEqual(professoresTodosBD);
 //   });
 // });
 
-// test("Criar Professor", () => {
-//   return professorModel
+// test("Criar Professor Controller", () => {
+//   return professorController
 //     .createProfessor({ matricula: "1234567", nome: "Professor Teste" })
 //     .then((data) => {
 //       expect(data).toEqual(
@@ -36,16 +36,16 @@
 //     });
 // });
 
-// test("Criar Professor Quebrado", () => {
-//   return professorModel
+// test("Criar Professor Quebrado Controller", () => {
+//   return professorController
 //     .createProfessor({ matricula: "1234568526963652", nome: "teste" })
 //     .then((data) => {
 //       expect(data).toEqual({ erro: "Professor não criado" });
 //     });
 // });
 
-// test("Editar Professor", () => {
-//   return professorModel
+// test("Editar Professor Controller", () => {
+//   return professorController
 //     .updateProfessor(3, { matricula: "202020", nome: "Kinder" })
 //     .then((data) => {
 //       expect(data).toEqual(
@@ -58,8 +58,8 @@
 //     });
 // });
 
-// test("Editar Professor Quebrado", () => {
-//   return professorModel
+// test("Editar Professor Quebrado Controller", () => {
+//   return professorController
 //     .updateProfessor(1, {
 //       matricula: "1234568526963652",
 //       nome: "teste update",
@@ -69,8 +69,8 @@
 //     });
 // });
 
-// test("Editar Professor inexistente", () => {
-//   return professorModel
+// test("Editar Professor inexistente Controller", () => {
+//   return professorController
 //     .updateProfessor(0, { matricula: "45678", nome: "teste update" })
 //     .then((data) => {
 //       expect(data).toEqual(
@@ -83,8 +83,8 @@
 //     });
 // });
 
-// test("Deletar Professor", () => {
-//   return professorModel.deleteProfessor(7).then((data) => {
+// test("Deletar Professor Controller", () => {
+//   return professorController.deleteProfessor(7).then((data) => {
 //     expect(data).toEqual(
 //       expect.arrayContaining([
 //         expect.objectContaining({
@@ -95,8 +95,8 @@
 //   });
 // });
 
-// test("Deletar Professor inexistente", () => {
-//   return professorModel.deleteProfessor(0).then((data) => {
+// test("Deletar Professor inexistente Controller", () => {
+//   return professorController.deleteProfessor(0).then((data) => {
 //     expect(data).toEqual(
 //       expect.arrayContaining([
 //         expect.objectContaining({

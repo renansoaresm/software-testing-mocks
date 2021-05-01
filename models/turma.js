@@ -26,9 +26,9 @@ async function createTurma(turma) {
       "INSERT INTO turma(codigo,disciplina_ID,professor_ID,periodo_ID) VALUES (?,?,?,?);";
     const values = [
       turma.codigo,
-      turma.disciplina,
-      turma.professor,
-      turma.periodo,
+      turma.disciplina_ID,
+      turma.professor_ID,
+      turma.periodo_ID,
     ];
     return await conn.query(sql, values);
   } catch (e) {
@@ -43,9 +43,9 @@ async function updateTurma(id, turma) {
       "UPDATE turma SET codigo=?, disciplina_ID=?, professor_ID=?, periodo_ID=? WHERE turma_ID=?";
     const values = [
       turma.codigo,
-      turma.disciplina,
-      turma.professor,
-      turma.periodo,
+      turma.disciplina_ID,
+      turma.professor_ID,
+      turma.periodo_ID,
       id,
     ];
     return await conn.query(sql, values);

@@ -3,9 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const professorModel = require("../models/professor.js");
 const professoresTodos = JSON.parse(
-  fs.readFileSync(
-    path.resolve(__dirname, "../models/__mocks__/professores.json")
-  )
+  fs.readFileSync(path.resolve(__dirname, "../models/__mocks__/professor.json"))
 );
 
 jest.mock("../models/professor.js");
@@ -14,8 +12,8 @@ test("Teste de get Professor By Matricula Mock", () => {
   expect(professorModel.getProfessorByMatricula(202020)).toEqual({
     matricula: 202020,
     nome: "Kinder",
+    professor_ID: 3,
   });
-
 });
 
 test("Teste de get Professor Mock", () => {
@@ -46,11 +44,24 @@ test("Criar Professor Quebrado Mock", () => {
 
 test("Editar Professor Mock", () => {
   return professorModel
+    .updateProfessor(10, { matricula: "9999999", nome: "teste" })
+    .then((data) => {
+      expect(data).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            affectedRows: 1,
+          }),
+        ])
+      );
     });
+});
 
 test("Editar Professor Quebrado Mock", () => {
   return professorModel
-    .updateProfessor(14, { matricula: "1234568526963652", nome: "teste update" })
+    .updateProfessor(14, {
+      matricula: "1234568526963652",
+      nome: "teste update",
+    })
     .then((data) => {
       expect(data).toEqual({ erro: "Professor não alterado" });
     });

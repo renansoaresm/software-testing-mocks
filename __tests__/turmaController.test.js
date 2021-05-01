@@ -1,13 +1,13 @@
 // const fs = require("fs");
 // const path = require("path");
-// const turmaModel = require("../models/turma.js");
+// const turmaController = require("../controllers/turmasController.js");
 // const turmasTodosBD = JSON.parse(
 //   fs.readFileSync(path.resolve(__dirname, "../models/turmasBD.json"))
 // );
 // require("iconv-lite").encodingExists("foo");
 
-// test("Teste de get Turma By Codigo", () => {
-//   return turmaModel.getTurmaByCodigo(123456).then((data) => {
+// test("Teste de get Turma By Codigo Controller", () => {
+//   return turmaController.getTurmaByCodigo(123456).then((data) => {
 //     expect(data).toEqual({
 //       turma_ID: 1,
 //       codigo: 123456,
@@ -18,14 +18,14 @@
 //   });
 // });
 
-// test("Teste de get Todos do Banco de dados", () => {
-//   return turmaModel.getTurmas().then((data) => {
+// test("Teste de get Todos do Banco de dados Controller", () => {
+//   return turmaController.getTurmas().then((data) => {
 //     expect(data).toEqual(turmasTodosBD);
 //   });
 // });
 
-// test("Criar Turma", () => {
-//   return turmaModel
+// test("Criar Turma Controller", () => {
+//   return turmaController
 //     .createTurma({
 //       turma_ID: 5,
 //       codigo: 54321,
@@ -44,8 +44,8 @@
 //     });
 // });
 
-// test("Criar Turma Quebrada", () => {
-//   return turmaModel
+// test("Criar Turma Quebrada Controller", () => {
+//   return turmaController
 //     .createTurma({
 //       turma_ID: 9999999999999,
 //       codigo: 9999999999999,
@@ -58,8 +58,8 @@
 //     });
 // });
 
-// test("Editar Turma", () => {
-//   return turmaModel
+// test("Editar Turma Controller", () => {
+//   return turmaController
 //     .updateTurma(1, {
 //       turma_ID: 1,
 //       codigo: 123456,
@@ -78,8 +78,8 @@
 //     });
 // });
 
-// test("Editar Turma Quebrado", () => {
-//   return turmaModel
+// test("Editar Turma Quebrado Controller", () => {
+//   return turmaController
 //     .updateTurma(1, {
 //       turma_ID: 9999999999999,
 //       codigo: 9999999999999,
@@ -92,8 +92,8 @@
 //     });
 // });
 
-// test("Editar Turma inexistente", () => {
-//   return turmaModel
+// test("Editar Turma inexistente Controller", () => {
+//   return turmaController
 //     .updateTurma(0, {
 //       turma_ID: 1,
 //       codigo: 123456,
@@ -112,8 +112,8 @@
 //     });
 // });
 
-// test("Deletar Turma", () => {
-//   return turmaModel.deleteTurma(9).then((data) => {
+// test("Deletar Turma Controller", () => {
+//   return turmaController.deleteTurma(10).then((data) => {
 //     expect(data).toEqual(
 //       expect.arrayContaining([
 //         expect.objectContaining({
@@ -124,8 +124,8 @@
 //   });
 // });
 
-// test("Deletar Turma inexistente", () => {
-//   return turmaModel.deleteTurma(0).then((data) => {
+// test("Deletar Turma inexistente Controller", () => {
+//   return turmaController.deleteTurma(0).then((data) => {
 //     expect(data).toEqual(
 //       expect.arrayContaining([
 //         expect.objectContaining({

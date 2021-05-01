@@ -14,7 +14,7 @@ test("Teste de get Disciplina By Codigo Mock", () => {
   expect(disciplinaModel.getDisciplinaByCodigo(172839)).toEqual({
     disciplina_ID: 1,
     codigo: 172839,
-    nome: "disciplina top top",
+    nome: "teste update",
   });
 });
 

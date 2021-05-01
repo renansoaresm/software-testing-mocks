@@ -3,18 +3,18 @@ const path = require("path");
 const turmasTodos = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "turmas.json"))
 );
-const aluno = jest.createMockFromModule("../turma.js");
+const turma = jest.createMockFromModule("../turma.js");
 
 function getTurmas() {
   return turmasTodos;
 }
 
-function getTurmasByID(id) {
-  return turmasTodos.find((turma) => turma.id == id);
+function getTurmaByCodigo(codigo) {
+  return turmasTodos.find((turma) => turma.codigo == codigo);
 }
 
 async function createTurma(turma) {
-  if (turma.id >= 2147483647) {
+  if (turma.turma_ID >= 2147483647 || turma.codigo >= 2147483647) {
     return { erro: "Turma não criada" };
   }
   return [
@@ -31,7 +31,7 @@ async function createTurma(turma) {
 }
 
 async function updateTurma(id, turma) {
-  if (turma.id >= 2147483647) {
+  if (turma.turma_ID >= 2147483647 || turma.codigo >= 2147483647) {
     return { erro: "Turma não alterada" };
   }
   if (id == 15) {
@@ -62,7 +62,7 @@ async function updateTurma(id, turma) {
   ];
 }
 
-async function deleteAluno(id) {
+async function deleteTurma(id) {
   if (id == 36) {
     return [
       {
@@ -90,9 +90,9 @@ async function deleteAluno(id) {
 }
 
 module.exports = {
-  getAlunos,
-  getAlunoByMatricula,
-  createAluno,
-  updateAluno,
-  deleteAluno,
+  getTurmas,
+  getTurmaByCodigo,
+  createTurma,
+  updateTurma,
+  deleteTurma,
 };

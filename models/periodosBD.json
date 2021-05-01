@@ -5,18 +5,18 @@
     "semestre": 1
   },
   {
-    "periodo_ID": 2,
-    "ano": 2021,
-    "semestre": 2
-  },
-  {
     "periodo_ID": 3,
-    "ano": 2022,
-    "semestre": 1
+    "ano": 2024,
+    "semestre": 3
   },
   {
     "periodo_ID": 4,
-    "ano": 2022,
-    "semestre": 2
+    "ano": 2023,
+    "semestre": 1
+  },
+  {
+    "periodo_ID": 5,
+    "ano": 2023,
+    "semestre": 1
   }
 ]

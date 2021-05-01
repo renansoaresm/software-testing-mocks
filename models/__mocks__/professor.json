@@ -1,8 +1,8 @@
 [
   {
     "professor_ID": 1,
-    "matricula": 202020,
-    "nome": "Kinder"
+    "matricula": 222222,
+    "nome": "Luciano"
   },
   {
     "professor_ID": 2,
@@ -11,42 +11,7 @@
   },
   {
     "professor_ID": 3,
-    "matricula": 222222,
-    "nome": "Luciano"
-  },
-  {
-    "professor_ID": 4,
-    "matricula": 097865,
-    "nome": "Rafael"
-  },
-  {
-    "professor_ID": 5,
-    "matricula": 665444,
-    "nome": "Dib"
-  },
-  {
-    "professor_ID": 6,
-    "matricula": 090902,
-    "nome": "Gizelly"
-  },
-  {
-    "professor_ID": 7,
-    "matricula": 876534,
-    "nome": "Henrique"
-  },
-  {
-    "professor_ID": 8,
-    "matricula": 100980,
-    "nome": "Thiago"
-  },
-  {
-    "professor_ID": 9,
-    "matricula": 091212,
-    "nome": "Bernardo"
-  },
-  {
-    "professor_ID": 10,
-    "matricula": 090976,
-    "nome": "Viviane"
+    "matricula": 202020,
+    "nome": "Kinder"
   }
 ]

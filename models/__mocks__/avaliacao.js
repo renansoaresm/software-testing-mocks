@@ -1,21 +1,21 @@
 const fs = require("fs");
 const path = require("path");
-const professorTodos = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, "professor.json"))
+const avaliacoesTodos = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "avaliacoes.json"))
 );
-const professor = jest.createMockFromModule("../professor.js");
+const aluno = jest.createMockFromModule("../avaliacao.js");
 
-function getProfessores() {
-  return professorTodos;
+function getAvaliacoes() {
+  return avaliacoesTodos;
 }
 
-function getProfessorByMatricula(matricula) {
-  return professorTodos.find((professor) => professor.matricula == matricula);
+function getAvaliacaoByID(id) {
+  return avaliacoesTodos.find((avaliacao) => avaliacao.id == id);
 }
 
-async function createProfessor(professor) {
-  if (professor.matricula >= 2147483647) {
-    return { erro: "Professor não criado" };
+async function createAvaliacao(avaliacao) {
+  if (avaliacao.id >= 2147483647) {
+    return { erro: "Avaliacao não criada" };
   }
   return [
     {
@@ -30,9 +30,9 @@ async function createProfessor(professor) {
   ];
 }
 
-async function updateProfessor(id, professor) {
-  if (professor.matricula >= 2147483647) {
-    return { erro: "Professor não alterado" };
+async function updateAvaliacao(id, aluno) {
+  if (avaliacao.id >= 2147483647) {
+    return { erro: "Avaliacao não alterada" };
   }
   if (id == 15) {
     return [
@@ -62,7 +62,7 @@ async function updateProfessor(id, professor) {
   ];
 }
 
-async function deleteProfessor(id) {
+async function deleteAvaliacao(id) {
   if (id == 36) {
     return [
       {
@@ -90,9 +90,9 @@ async function deleteProfessor(id) {
 }
 
 module.exports = {
-  getProfessores,
-  getProfessorByMatricula,
-  createProfessor,
-  updateProfessor,
-  deleteProfessor,
+  getAvaliacoes,
+  getAvaliacaoByID,
+  createAvaliacao,
+  updateAvaliacao,
+  deleteAvaliacao,
 };
